@@ -1,0 +1,76 @@
+<div class="container">
+    <h1>DemoTest</h1>
+    <div class="form-container">
+      <!-- Form Section -->
+      <div class="form-section">
+        <h2  [style.color]="'#4a90e2'" >Registration</h2>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div>
+            <label for="name"  [style.color]="'#4a90e2'">Name</label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="Enter your name"
+            />
+            <small *ngIf="submitted && registrationForm.get('name')?.errors?.['required']">
+              Name is required.
+            </small>
+            <small *ngIf="submitted && registrationForm.get('name')?.errors?.['pattern']">
+              Name can only contain letters and spaces.
+            </small>
+          </div>
+  
+          <!-- Email Field -->
+          <div>
+            <label for="email"  [style.color]="'#4a90e2'">Email</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="Enter your email"
+            />
+            <small *ngIf="submitted && registrationForm.get('email')?.errors?.['required']">
+              Email is required.
+            </small>
+            <small *ngIf="submitted && registrationForm.get('email')?.errors?.['email']">
+              Invalid email format.
+            </small>
+          </div>
+            <div>
+            <label for="mobile"  [style.color]="'#4a90e2'">Mobile No.</label>
+            <input
+              id="mobile"
+              type="text"
+              formControlName="mobile"
+              placeholder="Enter your mobile number"
+            />
+            <small *ngIf="submitted && registrationForm.get('mobile')?.errors?.['required']">
+              Mobile number is required.
+            </small>
+            <small *ngIf="submitted && registrationForm.get('mobile')?.errors?.['pattern']">
+              Mobile number must be 10 digits.
+            </small>
+          </div>
+  
+          <button type="submit">Submit</button>
+          <button type="button" (click)="onReset()">Reset</button>
+        </form>
+      </div>
+  
+      <!--  Message Section -->
+      <div class="message-section">
+        <h2  [style.color]="'#4a90e2'">Message Control</h2>
+        <div *ngIf="isSubmitted" class="success-message">
+          <h3>Test registration successfully:</h3>
+          <p>Register Name: {{ registrationData.name }}</p>
+          <p>Registered Email: {{ registrationData.email }}</p>
+          <p>Registered Mobile No.: {{ registrationData.mobile }}</p>
+        </div>
+        <div *ngIf="!isSubmitted">
+          <p>No messages to display.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
