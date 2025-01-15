@@ -3,7 +3,7 @@ import { provideRouter, Routes, withComponentInputBinding } from '@angular/route
 import { LoginComponent } from './app/login/login.component';
 import { RegistrationComponent } from './app/registration/registration.component';
 const routes: Routes = [
-  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
 ];
